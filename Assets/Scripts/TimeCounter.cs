@@ -6,12 +6,12 @@ using TMPro;
 public class TimeCounter : MonoBehaviour
 {
 
-    public float timeCounter = 0;
-    private TextMeshPro textMeshPro;
+    private float timeCounter = 0;
+    private TextMeshPro textMeshProTime;
     // Start is called before the first frame update
     void Start()
     {
-        textMeshPro = gameObject.GetComponent<TextMeshPro>();
+        textMeshProTime = gameObject.GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class TimeCounter : MonoBehaviour
 
         string timeToString = string.Format("{00:00}:{1:00}", minutes, seconds);
 
-        textMeshPro.SetText(timeToString);
+        textMeshProTime.SetText(timeToString);
         
     }
 }
