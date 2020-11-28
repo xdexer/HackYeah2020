@@ -8,7 +8,7 @@ TagManager:
 <<<<<<< HEAD
 =======
   - Trampoline
->>>>>>> a19a54952e2888bb9e91bcb20448e94aafd9816a
+>>>>>>> 0d7c196ff6fa7764706f9a52834e6b896a1574db
   layers:
   - Default
   - TransparentFX
@@ -21,10 +21,10 @@ TagManager:
   - Ground
   - StaticWall
 <<<<<<< HEAD
-  - JumpWall
-=======
   - Bullet
->>>>>>> a19a54952e2888bb9e91bcb20448e94aafd9816a
+=======
+  - 
+>>>>>>> 0d7c196ff6fa7764706f9a52834e6b896a1574db
   - 
   - 
   - 
