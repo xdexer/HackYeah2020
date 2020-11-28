@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PointsCounter : MonoBehaviour
 {
 
-    private float pointsCounter = 0.0f;
+    static public float pointsCounter = 0.0f;
     private TextMeshPro textMeshProPoints;
     // Start is called before the first frame update
     void Start()
