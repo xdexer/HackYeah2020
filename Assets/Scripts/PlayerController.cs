@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     private GameObject Player;
     public Animator animator;
 
+    public BoxCollider2D[] colliderList;
+
     // Jump modifiers
     [Header("Movement")]
     [Range(1f, 30f)]
@@ -15,6 +17,10 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
+    private bool canJump = true;
+    private bool canStandUp = true;
+    private bool isSliding = false;
+  
     [Space]
 
     // Determines how long after stepping out of the ground player can jump
@@ -36,6 +42,9 @@ public class PlayerController : MonoBehaviour
     // Check if player collides with GameObject with "StaticWall" layer
     public Transform isRightWallChecker;
 
+    // Check if player collides with ceiling
+    public Transform isCeilingChecker;
+
     public float checkGroundRadius;
     public float checkWallRadius;
     [Space]
@@ -50,12 +59,18 @@ public class PlayerController : MonoBehaviour
     // reference to the Rigidbody2D component
     private Rigidbody2D rigidBody;
 
-
+    public Rigidbody2D GetPlayerRigidBody()
+    {
+            return rigidBody;
+    }
 
 
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        colliderList = GetComponents<BoxCollider2D>();
+
+        colliderList[1].enabled = false;
     }
 
     // Update is called once per frame
@@ -64,6 +79,8 @@ public class PlayerController : MonoBehaviour
         CheckIfStaticWallOverlapped();
         Move();
         Jump();
+        CheckIfCanStandUp();
+        Slide();
         AnimationController();
         BetterJump();
         CheckIfGrounded();
@@ -78,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor))
+        if (canJump && Input.GetKeyDown(KeyCode.Space) && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor))
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
         }
@@ -86,6 +103,21 @@ public class PlayerController : MonoBehaviour
 
     void Slide()
     {
+        if (Input.GetKeyDown(KeyCode.S) && isGrounded)
+        {
+            Debug.Log("slide start");
+            isSliding = true;
+            canJump = false;
+            colliderList[0].enabled = false;
+            colliderList[1].enabled = true;
+        }
+        else if(Input.GetKeyUp(KeyCode.S) && isGrounded && canStandUp || !Input.GetKey(KeyCode.S) && canStandUp)
+        {
+            isSliding = false;
+            canJump = true;
+            colliderList[0].enabled = true;
+            colliderList[1].enabled = false;
+        }
 
     }
 
@@ -127,13 +159,23 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("WALL COLLISION");
             lastTimeReverted = Time.time;
-            speed *= -1;
             FlipThePlayer();
         }
     }
 
-    void FlipThePlayer()
+    void CheckIfCanStandUp()
     {
+        Collider2D collider = Physics2D.OverlapCircle(isCeilingChecker.position, checkWallRadius);
+
+        if (collider != null)
+            canStandUp = false;
+        else
+            canStandUp = true;
+    }
+
+    public void FlipThePlayer()
+    {
+        speed *= -1;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
@@ -141,6 +183,12 @@ public class PlayerController : MonoBehaviour
 
     void AnimationController()
     {
+
+        if (isSliding)
+            animator.SetBool("isSliding", true);
+        else
+            animator.SetBool("isSliding", false);
+
         if (rigidBody.velocity.y > 0)
         {
             animator.SetBool("isJumping", true);
