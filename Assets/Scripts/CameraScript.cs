@@ -6,11 +6,12 @@ public class CameraScript : MonoBehaviour
 {
 
     private GameObject playerObj = null;
+    private Camera camera;
     private bool isCameraMoving = false;
     private float startCameraMovement = 0;
-    private float cameraMultiplier = 0.15f;
+    private float cameraMultiplier = 0.2f;
     private float nextCameraSpeedUpPoint = 25;
-    private float cameraHeight = 2f * Camera.main.orthographicSize;
+    private float cameraDistance = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class CameraScript : MonoBehaviour
         {
             this.playerObj = FindObjectOfType<PlayerController>().gameObject;
             this.startCameraMovement = playerObj.transform.position.y + 3;
+            this.camera = Camera.main;
         }
     }
 
@@ -36,7 +38,17 @@ public class CameraScript : MonoBehaviour
             cameraMultiplier += 0.15f;
         }
 
-        Debug.Log(cameraHeight);
+
+        double cameraDist = (2f * camera.orthographicSize) + camera.transform.position.y;
+
+        double cameraDiff = cameraDist - playerObj.transform.position.y;
+
+        if(cameraDiff < 7)
+        {
+            var cameraPosition = Camera.main.gameObject.transform.position;
+            cameraPosition.y += 3;
+            Camera.main.gameObject.transform.position = Vector3.Lerp(Camera.main.gameObject.transform.position, cameraPosition, Time.deltaTime * 1.5f);
+        }
 
         if(this.isCameraMoving == true)
         {
