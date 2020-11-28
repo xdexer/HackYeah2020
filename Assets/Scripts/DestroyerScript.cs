@@ -15,24 +15,15 @@ public class DestroyerScript : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
     }
 
-    //private void Update()
-    //{
-    //    //Debug.Log(this.transform.position.y);
-    //    screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
-    //    //Debug.Log(screenBounds.y);
-    //    Vector3 DestroyerPosition = new Vector3(0.0f, -screenBounds.y - offset);
-    //    this.transform.position = DestroyerPosition;
-    //}
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collision " + collision.gameObject.tag);
-        if (collision.gameObject.tag == "Player")
+        Debug.Log("Collision " + other.gameObject.tag);
+        if (other.gameObject.tag == "Player")
         {
             Debug.Log("Game Over");
             x.GameOver();
         }
-        
-        Destroy(collision.gameObject);
+
+        Destroy(other.gameObject);
     }
 }
