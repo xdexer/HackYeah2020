@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8703874330736048445}
   m_Layer: 0
   m_Name: PF_Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,9 +111,6 @@ MonoBehaviour:
   staticWallLayer:
     serializedVersion: 2
     m_Bits: 512
-  jumpWallLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!212 &8703874330736048445
 SpriteRenderer:
   m_ObjectHideFlags: 0

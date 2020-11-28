@@ -21,11 +21,12 @@ public class BulletGenerator : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(this.transform.position.y);
+        //Debug.Log(this.transform.position.y);
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
-        Debug.Log(screenBounds.y);
+        //Debug.Log(screenBounds.y);
         Vector3 GeneratorPosition = new Vector3(0.0f, screenBounds.y + offset);
         this.transform.position = GeneratorPosition;
+        respawnTime = Random.Range(0.1f, 2.0f);
     }
 
     private void spawnBullet()
