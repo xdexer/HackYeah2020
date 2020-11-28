@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+<<<<<<< HEAD
+=======
   - Trampoline
+>>>>>>> 0d7c196ff6fa7764706f9a52834e6b896a1574db
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,11 @@ TagManager:
   - 
   - Ground
   - StaticWall
+<<<<<<< HEAD
   - Bullet
+=======
+  - 
+>>>>>>> 0d7c196ff6fa7764706f9a52834e6b896a1574db
   - 
   - 
   - 
