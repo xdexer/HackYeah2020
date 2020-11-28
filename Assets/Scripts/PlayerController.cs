@@ -5,35 +5,44 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private GameObject Player;
-
-    public float speed;
-
+    public Animator animator;
 
     // Jump modifiers
+    [Header("Movement")]
+    [Range(1f, 30f)]
+    public float speed;
+    [Range(1f, 30f)]
     public float jumpForce;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
-
+    [Space]
 
     // Determines how long after stepping out of the ground player can jump
+    [Header("Checkers")]
+    [Tooltip("Determines how long after stepping out of the ground player can jump")]
     public float rememberGroundedFor;
     float lastTimeGrounded;
 
-    // Check if player is standing on GameObject with "Ground" layer
-    private bool isGrounded;
-    public Transform isGroundedChecker;
-    public float checkGroundRadius;
-
-    // Layer to detect which GameObject is ground - set every ground to "Ground" layer
-    public LayerMask groundLayer;
-
     // Determines time, after player can be reverted again
+    [Tooltip("Determines time, after player can be reverted again")]
     public float rememberRevertedFor;
     float lastTimeReverted;
+    [Space]
 
+    // Check if player is standing on GameObject with "Ground" layer
+    private bool isGrounded;
+
+    public Transform isGroundedChecker;
     // Check if player collides with GameObject with "StaticWall" layer
     public Transform isRightWallChecker;
+
+    public float checkGroundRadius;
     public float checkWallRadius;
+    [Space]
+
+    [Header("Layers")]
+    // Layer to detect which GameObject is ground - set every ground to "Ground" layer
+    public LayerMask groundLayer;
 
     // Layer to detect which GameObject is ground - set every ground to "StaticWall" layer
     public LayerMask staticWallLayer;
@@ -41,11 +50,12 @@ public class PlayerController : MonoBehaviour
     // reference to the Rigidbody2D component
     private Rigidbody2D rigidBody;
 
-    // Start is called before the first frame update
+
+
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        Player = GameObject.Find("Character");
     }
 
     // Update is called once per frame
@@ -54,6 +64,7 @@ public class PlayerController : MonoBehaviour
         CheckIfStaticWallOverlapped();
         Move();
         Jump();
+        AnimationController();
         BetterJump();
         CheckIfGrounded();
     }
@@ -73,6 +84,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Slide()
+    {
+
+    }
+
     void BetterJump()
     {
         if (rigidBody.velocity.y < 0)
@@ -90,7 +106,9 @@ public class PlayerController : MonoBehaviour
         Collider2D collider = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);
 
         if (collider != null)
+        {
             isGrounded = true;
+        }
         else
         {
             if (isGrounded)
@@ -119,6 +137,28 @@ public class PlayerController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    void AnimationController()
+    {
+        if (rigidBody.velocity.y > 0)
+        {
+            animator.SetBool("isJumping", true);
+        }
+        else if (rigidBody.velocity.y < 0 && animator.GetBool("isJumping"))
+        {
+            animator.SetBool("isFalling", true);
+        }
+        else if (rigidBody.velocity.y == 0 && animator.GetBool("isFalling"))
+        {
+            animator.SetBool("isFalling", false);
+            animator.SetBool("isJumping", false);
+        }
+        else if (rigidBody.velocity.y < 0)
+        {
+            animator.SetBool("isFalling", true);
+            animator.SetBool("isJumping", false);
+        }
     }
 
 }

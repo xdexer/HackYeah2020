@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8703874330736048435}
   - component: {fileID: 8703874330736048434}
   - component: {fileID: 8703874330736048445}
+  - component: {fileID: 6904622294525372709}
   m_Layer: 0
   m_Name: PF_Character
   m_TagString: Untagged
@@ -111,9 +112,6 @@ MonoBehaviour:
   staticWallLayer:
     serializedVersion: 2
     m_Bits: 512
-  jumpWallLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!212 &8703874330736048445
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -164,6 +162,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6904622294525372709
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703874330736048444}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9a0fcc97852e28f489c0569ca47ae936, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8703874330918725772
 GameObject:
   m_ObjectHideFlags: 0
