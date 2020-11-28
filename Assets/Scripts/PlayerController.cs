@@ -58,10 +58,6 @@ public class PlayerController : MonoBehaviour
         CheckIfGrounded();
     }
 
-    void FixedUpdate()
-    {
-    }
-
     void Move()
     {
         // float x = Input.GetAxisRaw("Horizontal");
