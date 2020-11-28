@@ -10,6 +10,7 @@ public class CameraScript : MonoBehaviour
     private float startCameraMovement = 0;
     private float cameraMultiplier = 0.15f;
     private float nextCameraSpeedUpPoint = 25;
+    private float cameraHeight = 2f * Camera.main.orthographicSize;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,8 @@ public class CameraScript : MonoBehaviour
             nextCameraSpeedUpPoint *= 2;
             cameraMultiplier += 0.15f;
         }
+
+        Debug.Log(cameraHeight);
 
         if(this.isCameraMoving == true)
         {
