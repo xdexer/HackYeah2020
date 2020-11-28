@@ -23,10 +23,6 @@ public class PointsCounter : MonoBehaviour
         }
     }
 
-    public float getScore()
-    {
-        return pointsCounter;
-    }
     // Update is called once per frame
     void Update()
     {

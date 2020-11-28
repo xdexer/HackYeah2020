@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class GameLogic : MonoBehaviour
 {
     private static int HighScore = 0;
-    public PointsCounter points;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +14,7 @@ public class GameLogic : MonoBehaviour
 
     public void GameOver()
     {
-        int score =(int)points.getScore();
+        int score = (int)PointsCounter.pointsCounter;
         if (score > HighScore)
             HighScore = score;
         Debug.Log(HighScore);
