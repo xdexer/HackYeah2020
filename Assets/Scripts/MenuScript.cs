@@ -55,7 +55,7 @@ public class MenuScript : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("GeneratorTest");
+        SceneManager.LoadScene("LevelGenScene");
     }
 
     public void QuitGame()

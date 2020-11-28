@@ -12,6 +12,7 @@ public class CameraScript : MonoBehaviour
     private float cameraMultiplier = 0.2f;
     private float nextCameraSpeedUpPoint = 25;
     private float cameraDistance = 0;
+    public float cameraSensitivity = 1.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +48,7 @@ public class CameraScript : MonoBehaviour
         {
             var cameraPosition = Camera.main.gameObject.transform.position;
             cameraPosition.y += 3;
-            Camera.main.gameObject.transform.position = Vector3.Lerp(Camera.main.gameObject.transform.position, cameraPosition, Time.deltaTime * 1.5f);
+            Camera.main.gameObject.transform.position = Vector3.Lerp(Camera.main.gameObject.transform.position, cameraPosition, Time.deltaTime * cameraSensitivity);
         }
 
         if(this.isCameraMoving == true)
