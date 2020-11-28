@@ -9,11 +9,14 @@ public class GameLogic : MonoBehaviour
     void Start()
     {
         HighScore = 0;
+
     }
 
     public void GameOver()
     {
-        HighScore = 1000;
+        int score = (int)PointsCounter.pointsCounter;
+        if (score > HighScore)
+            HighScore = score;
         Debug.Log(HighScore);
         PlayerPrefs.SetInt("highscore", HighScore);
         SceneManager.LoadScene("MainMenu");

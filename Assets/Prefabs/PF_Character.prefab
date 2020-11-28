@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8703874330736048432}
   - component: {fileID: 8703874330736048435}
   - component: {fileID: 8703874330736048434}
+  - component: {fileID: 334828968067961720}
   - component: {fileID: 8703874330736048445}
   m_Layer: 0
   m_Name: PF_Character
@@ -111,6 +112,20 @@ MonoBehaviour:
   staticWallLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &334828968067961720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703874330736048444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db48a0933150d7d48b5a98d3a6f825cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 8703874330736048435}
+  launchForce: 20
 --- !u!212 &8703874330736048445
 SpriteRenderer:
   m_ObjectHideFlags: 0
