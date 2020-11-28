@@ -326,6 +326,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  rememberRevertedFor: 0
+  isRightWallChecker: {fileID: 0}
+  checkWallRadius: 0
+  staticWallLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &1834526841
 Rigidbody2D:
   serializedVersion: 4
