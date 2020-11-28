@@ -6,7 +6,7 @@ public class BulletScript : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float moveSpeed = 10.0f;
-
+    public GameLogic x;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,4 +14,12 @@ public class BulletScript : MonoBehaviour
         rb.velocity = new Vector2(0, -moveSpeed);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Game Over");
+            x.GameOver();
+        }
+    }
 }
