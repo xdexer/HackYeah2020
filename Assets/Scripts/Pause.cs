@@ -11,6 +11,7 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log("ESCAPE KURWAA");
             PauseGame();
         }
     }
@@ -35,6 +36,7 @@ public class Pause : MonoBehaviour
 
     public void MenuExitButton()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 

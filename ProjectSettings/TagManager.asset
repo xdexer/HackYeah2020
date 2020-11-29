@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trampoline
   - Bullet
+  - JumpWall
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - 
   - Bullet
   - Background
-  - 
-  - 
+  - Ground
+  - StaticWall
   - 
   - 
   - 

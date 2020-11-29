@@ -8,6 +8,8 @@ public class BulletGenerator : MonoBehaviour
     public float respawnTime = 1.0f;
     private Vector2 spawnCoord;
     private Vector2 screenBounds;
+    public int bulletSpawnPoints = 20;
+    private bool doOnce = true;
     public float offset = 5.0f;
     private bool spawner = false;
     private void Start()
@@ -15,21 +17,25 @@ public class BulletGenerator : MonoBehaviour
         Debug.Log(this.transform.position.x);
         spawnCoord = this.transform.position;
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
-
-        StartCoroutine(bulletWave());
     }
 
     private void Update()
     {
         //Debug.Log(this.transform.position.y);
-        if(PointsCounter.pointsCounter < 20)
+        if(PointsCounter.pointsCounter > bulletSpawnPoints)
         {
             spawner = true;
-            screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
-            //Debug.Log(screenBounds.y);
-            Vector3 GeneratorPosition = new Vector3(0.0f, screenBounds.y + offset);
-            this.transform.position = GeneratorPosition;
+            spawnCoord = this.transform.position;
+            //screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
+            ////Debug.Log(screenBounds.y);
+            //Vector3 GeneratorPosition = new Vector3(0.0f, screenBounds.y + offset);
+            //this.transform.position = GeneratorPosition;
             respawnTime = Random.Range(0.1f, 2.0f);
+            if (doOnce)
+            {
+                doOnce = false;
+                StartCoroutine(bulletWave());
+            }
         }
     }
 

@@ -44,14 +44,14 @@ public class CameraScript : MonoBehaviour
 
         double cameraDiff = cameraDist - playerObj.transform.position.y;
 
-        if(cameraDiff < 7)
+        if (cameraDiff < 8)
         {
             var cameraPosition = Camera.main.gameObject.transform.position;
-            cameraPosition.y += 3;
+            cameraPosition.y += 9;
             Camera.main.gameObject.transform.position = Vector3.Lerp(Camera.main.gameObject.transform.position, cameraPosition, Time.deltaTime * cameraSensitivity);
         }
 
-        if(this.isCameraMoving == true)
+        if (this.isCameraMoving == true)
         {
             float step = this.cameraMultiplier * Time.deltaTime;
             var cameraPosition = Camera.main.gameObject.transform.position;

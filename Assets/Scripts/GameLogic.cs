@@ -17,6 +17,7 @@ public class GameLogic : MonoBehaviour
         int score = (int)PointsCounter.pointsCounter;
         if (score > HighScore)
             HighScore = score;
+        PointsCounter.pointsCounter = 0;
         Debug.Log(HighScore);
         PlayerPrefs.SetInt("highscore", HighScore);
         SceneManager.LoadScene("MainMenu");

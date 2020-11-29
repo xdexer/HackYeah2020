@@ -158,8 +158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6904622294525372709}
   colliderList: []
-  speed: 5
-  jumpForce: 8
+  speed: 6.6
+  jumpForce: 8.2
   fallMultiplier: 3
   lowJumpMultiplier: 5
   rememberGroundedFor: 0.1
@@ -171,10 +171,10 @@ MonoBehaviour:
   checkWallRadius: 0.05
   groundLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   staticWallLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 2048
 --- !u!212 &8703874330736048445
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8703874330736048435}
-  launchForce: 10
+  launchForce: 15
 --- !u!114 &1177277625
 MonoBehaviour:
   m_ObjectHideFlags: 0

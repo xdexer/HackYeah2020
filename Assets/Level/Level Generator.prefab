@@ -45,8 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartLedgeSet: {fileID: 0}
   LedgeSets:
-  - {fileID: 7531002937776092446, guid: 0e3d6b0a0f241334ba47b9a3943721bc, type: 3}
+  - {fileID: 0}
   - {fileID: 7531002937776092446, guid: a5a656a0da92ae74fa7ffa47c3e80c43, type: 3}
   - {fileID: 7531002937776092446, guid: 92abd743b4d1b974792f4b3b904a0380, type: 3}
   - {fileID: 7531002937776092446, guid: 3f795ea2559ae7341a34f9cecaac550b, type: 3}
+  - {fileID: 7531002937776092446, guid: 9d695d1c44361514c945f062216daf7e, type: 3}
+  - {fileID: 7531002937776092446, guid: cab2a62be2038a246bd7d11e9e30f1c5, type: 3}
+  - {fileID: 7531002937776092446, guid: 1d2acbc3825c78e43b6ed0f83aff5343, type: 3}
   player: {fileID: 0}
